@@ -3,7 +3,7 @@ var birdImg;
 
 function preload()
 {
-  birdImg = loadImage("./assets/bird.png");
+  birdImg = loadImage("https://raw.githubusercontent.com/prasadchelsea33/FlappyBirdClone/master/assets/bird.png");
 }
 
 function Bird()
@@ -16,19 +16,19 @@ function Bird()
 
   this.show = function()
   {
-    fill(255);
-    //ellipse(this.x,this.y,20,20);
-    //birdImg = loadImage("./assets/bird.png");
-    image(birdImg,this.x,this.y);
+    fill(0);
+
+    image(birdImg,this.x,this.y,80,80);
+    //ellipse(this.x,this.y,80,80);
   }
 
   this.update = function()
   {
     this.yvelocity += this.gravity;
-    this.yvelocity *= 0.9;
+    this.yvelocity *= 0.99;
     this.y += this.yvelocity;
 
-    if(this.y > height || this.y < 0)
+    if(this.y > height || this.y < -80)
     {
       this.reset();
     }
@@ -45,10 +45,11 @@ function Bird()
     this.x = width/2;
     this.y = height/2;
     this.yvelocity = 0;
+    obs = [];
   }
 
   this.lift = function()
   {
-    this.yvelocity += -15;
+    this.yvelocity += -10;
   }
 }
